@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:weightSum="8"
+    tools:context=".ScienceCalc">
+
+    <TextView
+        android:id="@+id/calc_value"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:gravity="bottom|left"
+        android:text="@string/calc_value"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/colorPrimary"
+        android:textSize="80sp"
+        tools:ignore="RtlCompat,RtlHardcoded" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/ac"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/ac"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:textAllCaps="false"
+            android:background="@drawable/custom_button"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+        <Button
+            android:id="@+id/c"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:text="@string/c"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/opposite"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:text="@string/opposite"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/ln"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/ln"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/sin"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/sin"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+        <Button
+            android:id="@+id/cos"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/cos"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/tan"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/tan"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/log"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/log"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/sqrt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/sqrt"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+        <Button
+            android:id="@+id/_x_2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/x_2"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/_x_y"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/x_y"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/div"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/div"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/_7"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_7"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+        <Button
+            android:id="@+id/_8"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_8"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/_9"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_9"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/multiply"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/multiply"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/_4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_4"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+        <Button
+            android:id="@+id/_5"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_5"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/_6"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_6"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/sub"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/sub"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/_1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_1"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+        <Button
+            android:id="@+id/_2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_2"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/_3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/_3"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/add"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/_0"
+            android:layout_width="0dp"
+            android:layout_weight="2.035"
+            android:layout_height="fill_parent"
+            android:text="@string/_0"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle,NestedWeights" />
+
+        <Button
+            android:id="@+id/dot"
+            android:layout_width="0dp"
+            android:layout_weight="0.9825"
+            android:layout_height="fill_parent"
+            android:text="@string/dot"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/calc"
+            android:layout_width="0dp"
+            android:layout_weight="0.9825"
+            android:layout_height="fill_parent"
+            android:text="@string/calc"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="22sp"
+            android:background="@drawable/custom_button"
+            android:textAllCaps="false"
+            tools:ignore="ButtonStyle" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
