@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,9 +13,9 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 
 
-public class SimpleCalc extends AppCompatActivity {
+public class SimpleCalc<AdvancedActivity> extends AppCompatActivity {
 
-    private static final int [] buttons_num_ids = {
+    private static final int[] buttons_num_ids = {
             R.id._0,
             R.id._1,
             R.id._2,
@@ -250,24 +251,40 @@ public class SimpleCalc extends AppCompatActivity {
 
             if (Addition) {
                 BigDecimal result = bdi1.add(bdi2, MathContext.DECIMAL32);
-                screen.setText(parseOutput(result.doubleValue()));
+                if (isResultInfinity(result.doubleValue())) {
+                    screen.setText("");
+                } else {
+                    screen.setText(parseOutput(result.doubleValue()));
+                }
                 reset();
             }
 
             if (Subtract) {
                 BigDecimal result = bdi1.subtract(bdi2, MathContext.DECIMAL32);
-                screen.setText(parseOutput(result.doubleValue()));
+                if (isResultInfinity(result.doubleValue())) {
+                    screen.setText("");
+                } else {
+                    screen.setText(parseOutput(result.doubleValue()));
+                }
                 reset();
             }
 
             if (Multiplication) {
                 BigDecimal result = bdi1.multiply(bdi2, MathContext.DECIMAL32);
-                screen.setText(parseOutput(result.doubleValue()));
+                if (isResultInfinity(result.doubleValue())) {
+                    screen.setText("");
+                } else if (input2 == 0) {
+                    showException("You cannot multiply by zero!");
+                    screen.setText("");
+                } else {
+                    screen.setText(parseOutput(result.doubleValue()));
+                }
                 reset();
             }
 
             if (Division) {
                 if (input2 == 0.0) {
+                    showException("You cannot divide by zero!");
                     screen.setText("");
                 } else {
                     BigDecimal result = bdi1.divide(bdi2, MathContext.DECIMAL32);
@@ -315,5 +332,17 @@ public class SimpleCalc extends AppCompatActivity {
         Subtract = false;
         Multiplication = false;
         Division = true;
+    }
+
+    private boolean isResultInfinity(Double number) {
+        if (number.toString().contains("Infinity")) {
+            showException("The result is off the scale");
+            return true;
+        }
+        return false;
+    }
+
+    private void showException(String exceptionValue) {
+        Toast.makeText(SimpleCalc.this, exceptionValue, Toast.LENGTH_SHORT).show();
     }
 }

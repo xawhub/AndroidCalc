@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -342,25 +343,46 @@ public class ScienceCalc extends AppCompatActivity {
 
             if (Addition) {
                 BigDecimal result = bdi1.add(bdi2, MathContext.DECIMAL32);
-                screen.setText(parseOutput(result.doubleValue()));
+                if (isResultInfinity(result.doubleValue())) {
+                    screen.setText("");
+                    input1 = input2 = 0;
+                } else {
+                    screen.setText(parseOutput(result.doubleValue()));
+                }
                 reset();
             }
 
             if (Subtract) {
                 BigDecimal result = bdi1.subtract(bdi2, MathContext.DECIMAL32);
-                screen.setText(parseOutput(result.doubleValue()));
+                if (isResultInfinity(result.doubleValue())) {
+                    screen.setText("");
+                    input1 = input2 = 0;
+                } else {
+                    screen.setText(parseOutput(result.doubleValue()));
+                }
                 reset();
             }
 
             if (Multiplication) {
                 BigDecimal result = bdi1.multiply(bdi2, MathContext.DECIMAL32);
-                screen.setText(parseOutput(result.doubleValue()));
+                if (isResultInfinity(result.doubleValue())) {
+                    screen.setText("");
+                    input1 = input2 = 0;
+                } else if (input2 == 0) {
+                    showException("You cannot multiply by zero!");
+                    screen.setText("");
+                    input1 = input2 = 0;
+                } else {
+                    screen.setText(parseOutput(result.doubleValue()));
+                }
                 reset();
             }
 
             if (Division) {
                 if (input2 == 0.0) {
+                    showException("You cannot divide by zero!");
                     screen.setText("");
+                    input1 = input2 = 0;
                 } else {
                     BigDecimal result = bdi1.divide(bdi2, MathContext.DECIMAL32);
                     screen.setText(parseOutput(result.doubleValue()));
@@ -370,8 +392,12 @@ public class ScienceCalc extends AppCompatActivity {
 
             if (Power) {
                 val = pow(input1, input2);
-                System.out.println(val);
-                screen.setText(parseOutput(val));
+                if (isResultInfinity(val)) {
+                    input1 = input2 = 0;
+                    screen.setText("");
+                } else {
+                    screen.setText(parseOutput(val));
+                }
                 reset();
             }
 
@@ -380,12 +406,15 @@ public class ScienceCalc extends AppCompatActivity {
             butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button));
             butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button));
         }
+
+        bdi1 = new BigDecimal(input1);
+
         if (Sqrt) {
             if (input1 > 0) {
                 val = sqrt(input1);
-                System.out.println(val);
                 screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             } else {
+                showException("Inadequate value!");
                 screen.setText("");
                 input1 = 0;
             }
@@ -394,7 +423,13 @@ public class ScienceCalc extends AppCompatActivity {
 
         if (Square) {
             val = pow(input1, 2);
-            screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
+            String var = parseOutput(val);
+            if (var.length() > 9) {
+                showException("The result is off the scale");
+                input1 = input2 = 0;
+            } else {
+                screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
+            }
             reset();
         }
 
@@ -433,6 +468,7 @@ public class ScienceCalc extends AppCompatActivity {
                 val = log10(input1);
                 screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             } else {
+                showException("You should use a non-negative value!");
                 input1 = 0;
                 screen.setText("");
             }
@@ -444,6 +480,7 @@ public class ScienceCalc extends AppCompatActivity {
                 val = log(input1);
                 screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             } else {
+                showException("You should use a non-negative value!");
                 input1 = 0;
                 screen.setText("");
             }
@@ -645,4 +682,17 @@ public class ScienceCalc extends AppCompatActivity {
         Log = false;
         Ln = true;
     }
+
+    private boolean isResultInfinity(Double number) {
+        if (number.toString().contains("Infinity")) {
+            showException("The result is off the scale");
+            return true;
+        }
+        return false;
+    }
+
+    private void showException(String exceptionValue) {
+        Toast.makeText(ScienceCalc.this, exceptionValue, Toast.LENGTH_SHORT).show();
+    }
+
 }
