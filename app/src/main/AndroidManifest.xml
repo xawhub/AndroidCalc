@@ -9,10 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".About"/>
-        <activity android:name=".SimpleCalc"/>
-        <activity android:name=".ScienceCalc"/>
-        <activity android:name=".MenuActivity">
+        <activity
+            android:name=".About"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".SimpleCalc"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".ScienceCalc"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout" />
+        <activity
+            android:name=".MenuActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
