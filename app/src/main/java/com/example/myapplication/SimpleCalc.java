@@ -1,11 +1,13 @@
 package com.example.myapplication;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 
@@ -143,12 +145,7 @@ public class SimpleCalc extends AppCompatActivity {
                 butt_sub.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button));
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    // decimal = false;
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -161,12 +158,7 @@ public class SimpleCalc extends AppCompatActivity {
                 butt_sub.setBackground(getResources().getDrawable(R.drawable.custom_button_active));
                 butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button));
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    //   decimal = false;
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -179,12 +171,7 @@ public class SimpleCalc extends AppCompatActivity {
                 butt_sub.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button_active));
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    //    decimal = false;
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -197,12 +184,7 @@ public class SimpleCalc extends AppCompatActivity {
                 butt_sub.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button_active));
                 butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button));
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    //    decimal = false;
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -231,6 +213,15 @@ public class SimpleCalc extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void show() {
+        if (screen.getText().length() != 0) {
+            switcher = 1;
+            input1 = Double.parseDouble((String) screen.getText());
+            //   decimal = false;
+            screen.setText(null);
+        }
     }
 
     @SuppressLint("DefaultLocale")
@@ -324,18 +315,5 @@ public class SimpleCalc extends AppCompatActivity {
         Subtract = false;
         Multiplication = false;
         Division = true;
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("input", screen.getText().toString());
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        input = savedInstanceState.getString("input");
-        screen.setText(input);
     }
 }

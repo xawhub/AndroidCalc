@@ -1,16 +1,24 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
+
+import static java.lang.Math.cos;
+import static java.lang.Math.log;
+import static java.lang.Math.log10;
+import static java.lang.Math.pow;
+import static java.lang.Math.sin;
+import static java.lang.Math.sqrt;
+import static java.lang.Math.tan;
+import static java.lang.Math.toRadians;
 
 
 public class ScienceCalc extends AppCompatActivity {
@@ -156,12 +164,7 @@ public class ScienceCalc extends AppCompatActivity {
                 butt_sub.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button));
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    // decimal = false;
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -174,12 +177,7 @@ public class ScienceCalc extends AppCompatActivity {
                 butt_sub.setBackground(getResources().getDrawable(R.drawable.custom_button_active));
                 butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button));
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    //   decimal = false;
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -192,12 +190,7 @@ public class ScienceCalc extends AppCompatActivity {
                 butt_sub.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button_active));
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    //    decimal = false;
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -210,12 +203,7 @@ public class ScienceCalc extends AppCompatActivity {
                 butt_sub.setBackground(getResources().getDrawable(R.drawable.custom_button));
                 butt_div.setBackground(getResources().getDrawable(R.drawable.custom_button_active));
                 butt_mul.setBackground(getResources().getDrawable(R.drawable.custom_button));
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    //    decimal = false;
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -249,11 +237,8 @@ public class ScienceCalc extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Sqrt();
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    screen.setText(null);
-                }
+                show();
+                equal();
             }
         });
 
@@ -261,11 +246,8 @@ public class ScienceCalc extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Square();
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    screen.setText(null);
-                }
+                show();
+                equal();
             }
         });
 
@@ -273,11 +255,7 @@ public class ScienceCalc extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Power();
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    screen.setText(null);
-                }
+                show();
             }
         });
 
@@ -285,11 +263,8 @@ public class ScienceCalc extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Sin();
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    screen.setText(null);
-                }
+                show();
+                equal();
             }
         });
 
@@ -297,11 +272,8 @@ public class ScienceCalc extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Cos();
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    screen.setText(null);
-                }
+                show();
+                equal();
             }
         });
 
@@ -309,11 +281,8 @@ public class ScienceCalc extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Tan();
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    screen.setText(null);
-                }
+                show();
+                equal();
             }
         });
 
@@ -321,11 +290,8 @@ public class ScienceCalc extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log();
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    screen.setText(null);
-                }
+                show();
+                equal();
             }
         });
 
@@ -333,14 +299,19 @@ public class ScienceCalc extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Ln();
-                if (screen.getText().length() != 0) {
-                    switcher = 1;
-                    input1 = Double.parseDouble((String) screen.getText());
-                    screen.setText(null);
-                }
+                show();
+                equal();
             }
         });
 
+    }
+
+    private void show() {
+        if (screen.getText().length() != 0) {
+            switcher = 1;
+            input1 = Double.parseDouble((String) screen.getText());
+            screen.setText(null);
+        }
     }
 
     @SuppressLint("DefaultLocale")
@@ -360,7 +331,7 @@ public class ScienceCalc extends AppCompatActivity {
         switcher = 0;
         BigDecimal bdi1;
         BigDecimal bdi2;
-        Double val;
+        double val;
         System.out.println(input1);
         if (screen.getText() != "") {
             if (Addition || Subtract || Multiplication || Division || Power) {
@@ -398,8 +369,7 @@ public class ScienceCalc extends AppCompatActivity {
             }
 
             if (Power) {
-                System.out.println(input2);
-                val = Math.pow(input1, input2);
+                val = pow(input1, input2);
                 System.out.println(val);
                 screen.setText(parseOutput(val));
                 reset();
@@ -412,7 +382,7 @@ public class ScienceCalc extends AppCompatActivity {
         }
         if (Sqrt) {
             if (input1 > 0) {
-                val = Math.sqrt(input1);
+                val = sqrt(input1);
                 System.out.println(val);
                 screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             } else {
@@ -423,8 +393,7 @@ public class ScienceCalc extends AppCompatActivity {
         }
 
         if (Square) {
-            val = Math.pow(input1, 2);
-            System.out.println(val);
+            val = pow(input1, 2);
             screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             reset();
         }
@@ -434,8 +403,7 @@ public class ScienceCalc extends AppCompatActivity {
                 input1 += 360;
             }
             double v1 = input1 % 360;
-            val = Math.sin(Math.toRadians(v1));
-            System.out.println(val);
+            val = sin(toRadians(v1));
             screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             reset();
         }
@@ -445,8 +413,7 @@ public class ScienceCalc extends AppCompatActivity {
                 input1 += 360;
             }
             double v1 = input1 % 360;
-            val = Math.cos(Math.toRadians(v1));
-            System.out.println(val);
+            val = cos(toRadians(v1));
             screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             reset();
         }
@@ -456,16 +423,14 @@ public class ScienceCalc extends AppCompatActivity {
                 input1 += 360;
             }
             double v1 = input1 % 360;
-            val = Math.tan(Math.toRadians(v1));
-            System.out.println(val);
+            val = tan(toRadians(v1));
             screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             reset();
         }
 
         if (Log) {
             if (input1 > 0) {
-                val = Math.log10(input1);
-                System.out.println(val);
+                val = log10(input1);
                 screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             } else {
                 input1 = 0;
@@ -476,8 +441,7 @@ public class ScienceCalc extends AppCompatActivity {
 
         if (Ln) {
             if (input1 > 0) {
-                val = Math.log(input1);
-                System.out.println(val);
+                val = log(input1);
                 screen.setText(String.format("%s%s", screen.getText(), parseOutput(val)));
             } else {
                 input1 = 0;
@@ -680,18 +644,5 @@ public class ScienceCalc extends AppCompatActivity {
         Tan = false;
         Log = false;
         Ln = true;
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("input", screen.getText().toString());
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        input = savedInstanceState.getString("input");
-        screen.setText(input);
     }
 }
