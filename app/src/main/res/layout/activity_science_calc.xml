@@ -20,7 +20,8 @@
         android:text="@string/calc_value"
         android:textAlignment="viewEnd"
         android:textColor="@color/colorPrimary"
-        android:textSize="80sp"
+        android:textSize="70sp"
+        android:maxLength="9"
         tools:ignore="RtlCompat,RtlHardcoded" />
 
     <LinearLayout
